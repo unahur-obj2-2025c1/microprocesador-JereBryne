@@ -20,9 +20,9 @@ public interface Programable {
 
     Integer getAcumuladorB();
 
-    void copyFrom(Programable programable);
+    //void copyFrom(Programable programable);
 
-    Programable copy();
+    //Programable copy();
 
     void reset();
 

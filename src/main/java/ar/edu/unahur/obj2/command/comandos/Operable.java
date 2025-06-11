@@ -6,6 +6,7 @@ public interface Operable {
 
     void execute(Programable micro);
 
-    void undo(Programable micro);
+    //void undo(Programable micro);
+
 
 }

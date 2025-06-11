@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Microprocesador.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">microprocesador</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unahur.obj2.command</a> &gt; <span class="el_source">Microprocesador.java</span></div><h1>Microprocesador.java</h1><pre class="source lang-java linenums">package ar.edu.unahur.obj2.command;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import ar.edu.unahur.obj2.command.comandos.Operable;
+import ar.edu.unahur.obj2.command.excepctions.MicroException;
+
+<span class="fc" id="L10">public class Microprocesador implements Programable{</span>
+<span class="fc" id="L11">	private static final Integer MIN_ADDR_VALUE = 0;</span>
+<span class="fc" id="L12">    private static final Integer MAX_ADDR_VALUE = 1023;</span>
+<span class="fc" id="L13">	private Integer acumA = 0;</span>
+<span class="fc" id="L14">	private Integer acumB = 0;</span>
+<span class="fc" id="L15">	private Integer programCounter = 0;</span>
+<span class="fc" id="L16">	private Map&lt;Integer, Integer&gt; memoria = new HashMap&lt;Integer, Integer&gt;();</span>
+	
+	@Override
+	public void run(List&lt;Operable&gt; operaciones) {
+<span class="fc" id="L20">		operaciones.stream().forEach(o -&gt; o.execute(this));</span>
+<span class="fc" id="L21">	}</span>
+	@Override
+	public void incProgramCounter(){
+<span class="fc" id="L24">		programCounter++;</span>
+<span class="fc" id="L25">	}</span>
+	@Override
+	public Integer getProgramCounter() {
+<span class="fc" id="L28">		return programCounter;</span>
+	}
+	@Override
+	public void setAcumuladorA(Integer value) {
+<span class="fc" id="L32">		this.acumA = value;		</span>
+<span class="fc" id="L33">	}</span>
+	@Override
+	public Integer getAcumuladorA() {
+<span class="fc" id="L36">		return acumA;</span>
+	}
+	@Override
+	public void setAcumuladorB(Integer value) {
+<span class="fc" id="L40">		this.acumB = value;	</span>
+<span class="fc" id="L41">	}</span>
+	@Override
+	public Integer getAcumuladorB() {
+<span class="fc" id="L44">		return acumB;</span>
+	}
+/*	@Override
+	public void copyFrom(Programable programable) {
+		this.acumA = programable.getAcumuladorA();
+		this.acumB = programable.getAcumuladorB();
+		this.programCounter = programable.getProgramCounter();
+	}
+	@Override
+	public Programable copy() {
+		return this;
+	}*/
+	@Override
+	public void reset() {
+<span class="fc" id="L58">		this.acumA = 0;</span>
+<span class="fc" id="L59">		this.acumB = 0;</span>
+<span class="fc" id="L60">		this.programCounter = 0;</span>
+<span class="fc" id="L61">		memoria = new HashMap&lt;Integer, Integer&gt;();</span>
+<span class="fc" id="L62">	}</span>
+	@Override
+	public void setAddr(Integer addr) {
+<span class="fc bfc" id="L65" title="All 2 branches covered.">		if (!estaEnRango(addr))</span>
+<span class="fc" id="L66">			throw new MicroException(&quot;La posicion de memoria esta fuera de rango, debe estar entre 0 y 1023&quot;);</span>
+<span class="fc" id="L67">		memoria.put(addr, acumA);		</span>
+<span class="fc" id="L68">	}</span>
+	
+	@Override
+	public Integer getAddr(Integer addr) {
+<span class="fc bfc" id="L72" title="All 2 branches covered.">		if (!estaEnRango(addr))</span>
+<span class="fc" id="L73">			throw new MicroException(&quot;La posicion de memoria esta fuera de rango, debe estar entre 0 y 1023&quot;);</span>
+<span class="fc" id="L74">		return memoria.get(addr);</span>
+	}
+	
+	private boolean estaEnRango(Integer addr) {
+<span class="fc bfc" id="L78" title="All 4 branches covered.">		return addr &gt;= MIN_ADDR_VALUE &amp;&amp; addr &lt;= MAX_ADDR_VALUE;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

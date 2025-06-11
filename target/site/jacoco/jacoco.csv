@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+microprocesador,ar.edu.unahur.obj2.command.excepctions,MicroException,0,4,0,0,0,2,0,1,0,1
+microprocesador,ar.edu.unahur.obj2.command,ProgramBuilder,0,77,0,2,0,17,0,9,0,8
+microprocesador,ar.edu.unahur.obj2.command,Microprocesador,0,132,0,8,0,31,0,18,0,14
+microprocesador,ar.edu.unahur.obj2.command.comandos,Command,0,9,0,0,0,4,0,2,0,2
+microprocesador,ar.edu.unahur.obj2.command.comandos,NOP,0,4,0,0,0,2,0,2,0,2
+microprocesador,ar.edu.unahur.obj2.command.comandos,ADD,0,20,0,0,0,5,0,2,0,2
+microprocesador,ar.edu.unahur.obj2.command.comandos,LOD,0,13,0,0,0,5,0,2,0,2
+microprocesador,ar.edu.unahur.obj2.command.comandos,STR,0,11,0,0,0,5,0,2,0,2
+microprocesador,ar.edu.unahur.obj2.command.comandos,LODV,0,11,0,0,0,5,0,2,0,2
+microprocesador,ar.edu.unahur.obj2.command.comandos,SWAP,0,14,0,0,0,5,0,2,0,2
